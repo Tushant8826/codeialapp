@@ -5,6 +5,10 @@ const port = 8000;//step1
 const expressLayouts =  require('express-ejs-layouts');//step4 install express-ejs-layouts
 const db = require('./config/mongoose');//step7 configure database 
 
+//used for session cookie
+const session = require('express-session');//step9
+const passport = require('passport');//step 9
+const passportLocal = require('./config/passport-local-strategy');//step9
 
 app.use(express.urlencoded());//step8 
 app.use(cookirParser());//step8
@@ -12,9 +16,26 @@ app.use(express.static('./assets'));//step5
 app.use(expressLayouts);//step4 before routes
 app.set('layout extractStyles' ,true);//step6 extraxt style and scripts from sub pages into the layouts bascailly put link tage int head tagd
 app.set('layout extractScripts' ,true);//step6
-app.use('/',require('./routes/index'));//step2 making routes and controllers
+
+
 app.set('view engine','ejs');//step3 install ejs it's a view template
 app.set('views','./views');//step3 set views folder
+app.use(session({  //step9
+    name: 'codeial',
+    // TODO change the secret before deployment in production mode
+    secret: 'blahsomething',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000 * 60 * 100)
+    }
+}));
+
+app.use(passport.initialize());//step9
+app.use(passport.session());//step9
+app.use(passport.setAuthenticatedUser)//step9
+app.use('/',require('./routes/index'));//step2 making routes and controllers
+
 app.listen(port ,function(err) {      //step1
     if(err) {                             
         console.log(`Error in running the server :${err}`);
