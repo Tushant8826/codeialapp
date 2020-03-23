@@ -2,11 +2,11 @@ const express = require('express');//step1
 const app = express();//step1
 const port = 8000;//step1
 const expressLayouts =  require('express-ejs-layouts');//step4 install express-ejs-layouts
-
+const db = require('./config/mongoose');//step7 configure database 
 
 app.use(express.static('./assets'));//step5 
 app.use(expressLayouts);//step4 before routes
-app.set('layout extractStyles' ,true);//step6 extraxt style and scripts from sub pages into the layouts bascailly put link tage int head tag
+app.set('layout extractStyles' ,true);//step6 extraxt style and scripts from sub pages into the layouts bascailly put link tage int head tagd
 app.set('layout extractScripts' ,true);//step6
 app.use('/',require('./routes/index'));//step2 making routes and controllers
 app.set('view engine','ejs');//step3 install ejs it's a view template
