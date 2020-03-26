@@ -1,0 +1,25 @@
+header {
+    height: 3rem;
+    background-color: lightseagreen;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    #name p {
+        color: white;
+        font-size: 1.5rem;
+        margin-left: 8px;
+    }
+    #right_side ul {
+        margin: 0px;
+        list-style: none;
+        li {
+            display: inline;
+            margin-right: 10px;
+            a {
+                color: white;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+}
