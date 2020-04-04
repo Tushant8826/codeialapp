@@ -23,6 +23,7 @@ app.use(sassMiddleWare({  //step11
 app.use(express.urlencoded());//step8 
 app.use(cookirParser());//step8
 app.use(express.static('./assets'));//step5 
+app.use('uploads',express.static(__dirname+'/uploads'));//step 14 make uploads path available to browser
 app.use(expressLayouts);//step4 before routes
 app.set('layout extractStyles' ,true);//step6 extraxt style and scripts from sub pages into the layouts bascailly put link tage int head tagd
 app.set('layout extractScripts' ,true);//step6
