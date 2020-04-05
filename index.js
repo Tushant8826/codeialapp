@@ -9,6 +9,7 @@ const db = require('./config/mongoose');//step7 configure database
 const session = require('express-session');//step9
 const passport = require('passport');//step 9
 const passportLocal = require('./config/passport-local-strategy');//step9
+const passportJWT= require('./config/passport-jwt-strategy');//step 15 
 const MongoStore = require('connect-mongo')(session);//step10 store the session cookie
 const sassMiddleWare =  require('node-sass-middleware');//step11 for SASS
 const flash =  require('connect-flash');//step12 for flash message
