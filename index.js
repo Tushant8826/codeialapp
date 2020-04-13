@@ -15,6 +15,9 @@ const MongoStore = require('connect-mongo')(session);//step10 store the session 
 const sassMiddleWare =  require('node-sass-middleware');//step11 for SASS
 const flash =  require('connect-flash');//step12 for flash message
 const customMware = require('./config/middleware');//step13 custom mware for 
+const chatServer = require('http').Server(app);//step 17 chat engine
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);//step 17 see file config/chat_sockets
+chatServer.listen(5000);    
 app.use(sassMiddleWare({  //step11
     src :'./assets/scss',
     dest :'./assets/css',
